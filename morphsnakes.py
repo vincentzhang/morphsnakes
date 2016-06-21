@@ -103,7 +103,10 @@ curvop = fcycle([SIoIS, ISoSI])
 
 # Stopping factors (function g(I) in the paper).
 def gborders(img, alpha=1.0, sigma=1.0):
-    """Stopping criterion for image borders."""
+    """
+    Stopping criterion for image borders. Lower at the border, higher in the
+    center.
+    """
     # The norm of the gradient.
     gradnorm = gaussian_gradient_magnitude(img, sigma, mode='constant')
     return 1.0/np.sqrt(1.0 + alpha*gradnorm)
